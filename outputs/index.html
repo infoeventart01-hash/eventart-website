@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EventArt | Luxury Event Design & Coordination in Ottawa</title>
+    <meta
+      name="description"
+      content="EventArt creates refined luxury event design, decor, coordination, and unforgettable weddings, private celebrations, and corporate events in Ottawa."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <style>
+      :root {
+        --black: #050505;
+        --charcoal: #111111;
+        --charcoal-2: #191816;
+        --ivory: #fff8ea;
+        --muted: #d8d0c0;
+        --soft: rgba(255, 248, 234, 0.72);
+        --gold: #c9a45d;
+        --gold-light: #f0d48b;
+        --line: rgba(240, 212, 139, 0.24);
+        --panel: rgba(255, 248, 234, 0.055);
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--black);
+        color: var(--ivory);
+        font-family: "Inter", Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-header {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-bottom: 1px solid rgba(255, 248, 234, 0.12);
+        background: rgba(5, 5, 5, 0.78);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1180px, calc(100% - 32px));
+        min-height: 74px;
+        margin: 0 auto;
+        gap: 24px;
+      }
+
+      .brand {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.55rem;
+        font-weight: 700;
+        color: var(--gold-light);
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2vw, 28px);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .menu a {
+        color: rgba(255, 248, 234, 0.82);
+      }
+
+      .menu a:hover,
+      .menu a:focus-visible {
+        color: var(--gold-light);
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        min-height: 92vh;
+        padding: 130px 0 84px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background:
+          linear-gradient(90deg, rgba(5, 5, 5, 0.94) 0%, rgba(5, 5, 5, 0.72) 42%, rgba(5, 5, 5, 0.34) 100%),
+          linear-gradient(0deg, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.18) 34%, rgba(5, 5, 5, 0.68)),
+          url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=2200&q=82") center / cover;
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: -1;
+        height: 120px;
+        content: "";
+        background: linear-gradient(0deg, var(--black), rgba(5, 5, 5, 0));
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero-content {
+        max-width: 760px;
+        align-self: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--gold-light);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        line-height: 0.98;
+      }
+
+      h1 {
+        max-width: 700px;
+        font-size: clamp(4.6rem, 13vw, 10rem);
+        font-weight: 700;
+      }
+
+      .hero h2 {
+        max-width: 780px;
+        margin-top: 10px;
+        color: var(--gold-light);
+        font-size: clamp(2.15rem, 5vw, 4.5rem);
+        font-weight: 600;
+      }
+
+      .hero p {
+        max-width: 650px;
+        margin: 26px 0 0;
+        color: var(--muted);
+        font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 24px;
+        border: 1px solid var(--gold);
+        font-size: 0.86rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        color: #12100b;
+      }
+
+      .btn-secondary {
+        background: rgba(5, 5, 5, 0.25);
+        color: var(--gold-light);
+      }
+
+      section {
+        padding: clamp(76px, 9vw, 120px) 0;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 0.88fr) minmax(260px, 0.52fr);
+        align-items: end;
+        gap: 28px;
+        margin-bottom: 44px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2.7rem, 7vw, 5.5rem);
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--soft);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .service {
+        min-height: 178px;
+        padding: 26px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(255, 248, 234, 0.05), rgba(255, 248, 234, 0.015));
+      }
+
+      .number {
+        color: var(--gold-light);
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.55rem;
+      }
+
+      .service h3,
+      .package h3,
+      .gallery-item h3 {
+        margin-top: 32px;
+        font-size: 1.75rem;
+      }
+
+      .packages {
+        background:
+          linear-gradient(rgba(5, 5, 5, 0.72), rgba(5, 5, 5, 0.9)),
+          url("https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=2200&q=82") center / cover fixed;
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .package {
+        min-height: 330px;
+        padding: 30px;
+        border: 1px solid var(--line);
+        background: rgba(5, 5, 5, 0.62);
+        box-shadow: var(--shadow);
+      }
+
+      .package p {
+        color: var(--muted);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+      }
+
+      .gallery-item {
+        position: relative;
+        min-height: 340px;
+        padding: 26px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        border: 1px solid rgba(255, 248, 234, 0.12);
+      }
+
+      .gallery-item::before {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        content: "";
+        background: var(--photo) center / cover;
+        transition: transform 500ms ease;
+      }
+
+      .gallery-item::after {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background: linear-gradient(0deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.12));
+      }
+
+      .gallery-item:hover::before {
+        transform: scale(1.05);
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(2) {
+        grid-column: span 6;
+      }
+
+      .gallery-item:nth-child(n + 3) {
+        grid-column: span 4;
+      }
+
+      .about {
+        background: var(--charcoal);
+      }
+
+      .about-layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.85fr) minmax(300px, 1fr);
+        align-items: center;
+        gap: clamp(32px, 6vw, 82px);
+      }
+
+      .about-media {
+        min-height: 620px;
+        background:
+          linear-gradient(0deg, rgba(5, 5, 5, 0.24), rgba(5, 5, 5, 0.24)),
+          url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=82") center / cover;
+        box-shadow: var(--shadow);
+      }
+
+      .about-text h2 {
+        margin-bottom: 28px;
+        font-size: clamp(2.65rem, 6vw, 5.2rem);
+      }
+
+      .about-text p {
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .contact {
+        background:
+          linear-gradient(180deg, rgba(5, 5, 5, 0.98), rgba(17, 17, 17, 0.98)),
+          url("https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=2200&q=82") center / cover;
+      }
+
+      .contact-layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(320px, 1fr);
+        gap: clamp(28px, 5vw, 72px);
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--gold-light);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 52px;
+        border: 1px solid rgba(240, 212, 139, 0.35);
+        border-radius: 0;
+        background: rgba(5, 5, 5, 0.72);
+        color: var(--ivory);
+        font: inherit;
+        padding: 13px 14px;
+      }
+
+      textarea {
+        min-height: 132px;
+        resize: vertical;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      .form-note {
+        margin: 20px 0 0;
+        color: var(--soft);
+        font-size: 0.94rem;
+      }
+
+      .form-status {
+        min-height: 24px;
+        margin: 0;
+        color: var(--gold-light);
+        font-weight: 700;
+      }
+
+      .footer {
+        padding: 32px 0;
+        border-top: 1px solid rgba(255, 248, 234, 0.12);
+        color: rgba(255, 248, 234, 0.62);
+      }
+
+      .footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      @media (max-width: 860px) {
+        .site-header {
+          position: absolute;
+        }
+
+        .nav {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 18px 0;
+        }
+
+        .menu {
+          flex-wrap: wrap;
+          gap: 10px 18px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 190px;
+        }
+
+        .section-heading,
+        .about-layout,
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid,
+        .package-grid,
+        form {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-item,
+        .gallery-item:nth-child(1),
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(n + 3) {
+          grid-column: 1 / -1;
+        }
+
+        .about-media {
+          min-height: 420px;
+        }
+
+        .footer .wrap {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .wrap,
+        .nav {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .hero {
+          padding-bottom: 64px;
+        }
+
+        h1 {
+          font-size: clamp(3.65rem, 18vw, 5rem);
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#home">EventArt</a>
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#packages">Packages</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="wrap hero-content">
+          <p class="eyebrow">Luxury Event Design &amp; Coordination in Ottawa</p>
+          <h1>EVENTART</h1>
+          <h2>Luxury Event Design &amp; Coordination</h2>
+          <p>
+            We design elegant, unforgettable events with a refined black-and-gold touch.
+            From weddings to private celebrations and corporate events, EventArt brings
+            your vision to life with style, organization, and excellence.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#contact">Book Your Consultation</a>
+            <a class="btn btn-secondary" href="#portfolio">View Portfolio</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Services</p>
+              <h2>Thoughtful details, beautifully coordinated.</h2>
+            </div>
+            <p>
+              Elegant decor, flawless coordination, and unforgettable experiences
+              for weddings, private celebrations, and corporate events.
+            </p>
+          </div>
+          <div class="services-grid">
+            <article class="service">
+              <span class="number">01</span>
+              <h3>Wedding Design &amp; Décor</h3>
+            </article>
+            <article class="service">
+              <span class="number">02</span>
+              <h3>Day-of Coordination</h3>
+            </article>
+            <article class="service">
+              <span class="number">03</span>
+              <h3>Private Events</h3>
+            </article>
+            <article class="service">
+              <span class="number">04</span>
+              <h3>Corporate Events</h3>
+            </article>
+            <article class="service">
+              <span class="number">05</span>
+              <h3>Custom Signage &amp; Seating Charts</h3>
+            </article>
+            <article class="service">
+              <span class="number">06</span>
+              <h3>Vendor Coordination</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="packages" id="packages">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Luxury Packages</p>
+              <h2>Choose the level of support your celebration deserves.</h2>
+            </div>
+            <p>
+              From focused coordination to complete design and vendor support,
+              each package is shaped for a refined, composed event experience.
+            </p>
+          </div>
+          <div class="package-grid">
+            <article class="package">
+              <span class="number">Essential</span>
+              <h3>Essential Elegance</h3>
+              <p>Coordination plus light décor support for a polished event day.</p>
+            </article>
+            <article class="package">
+              <span class="number">Signature</span>
+              <h3>Signature EventArt</h3>
+              <p>Full design concept, visual direction, and décor setup.</p>
+            </article>
+            <article class="package">
+              <span class="number">Luxury</span>
+              <h3>Luxury Experience</h3>
+              <p>Full event design, planning support, coordination, and vendors.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Portfolio</p>
+              <h2>Editorial-style moments for every occasion.</h2>
+            </div>
+            <p>
+              Explore gallery collections across intimate celebrations,
+              statement weddings, branded gatherings, and concept mockups.
+            </p>
+          </div>
+          <div class="portfolio-grid">
+            <article class="gallery-item" style="--photo: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=82')">
+              <h3>Weddings</h3>
+            </article>
+            <article class="gallery-item" style="--photo: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1400&q=82')">
+              <h3>Birthdays</h3>
+            </article>
+            <article class="gallery-item" style="--photo: url('https://images.unsplash.com/photo-1544829879-bc2d6d66d259?auto=format&fit=crop&w=1000&q=82')">
+              <h3>Baby Showers</h3>
+            </article>
+            <article class="gallery-item" style="--photo: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=82')">
+              <h3>Corporate Events</h3>
+            </article>
+            <article class="gallery-item" style="--photo: url('https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1000&q=82')">
+              <h3>Mockups &amp; Design Concepts</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="wrap about-layout">
+          <div class="about-media" aria-label="Elegant event table setting"></div>
+          <div class="about-text">
+            <p class="eyebrow">About</p>
+            <h2>Refined, elegant, and memorable events with a luxury touch.</h2>
+            <p>
+              EventArt creates refined, elegant, and memorable events with a
+              luxury touch. We specialize in transforming spaces with thoughtful
+              design, beautiful details, and professional coordination.
+            </p>
+            <p>
+              Every celebration is approached with calm organization, elevated
+              styling, and a deep respect for the atmosphere guests will remember.
+            </p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#contact">Book a Consultation</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="wrap contact-layout">
+          <div>
+            <p class="eyebrow">Contact / Consultation</p>
+            <h2>Begin your EventArt experience.</h2>
+            <p class="form-note">
+              Share the first details and we will follow up to discuss your
+              event vision, priorities, timing, and design direction.
+            </p>
+          </div>
+          <form id="consultation-form">
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name">
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email">
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" autocomplete="tel">
+            </label>
+            <label>
+              Event type
+              <select name="event-type">
+                <option value="">Select one</option>
+                <option>Wedding</option>
+                <option>Private celebration</option>
+                <option>Corporate event</option>
+                <option>Baby shower</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>
+              Event date
+              <input type="date" name="event-date">
+            </label>
+            <label>
+              Guest count
+              <input type="number" name="guest-count" min="1">
+            </label>
+            <label>
+              Budget range
+              <select name="budget-range">
+                <option value="">Select range</option>
+                <option>$2,500 - $5,000</option>
+                <option>$5,000 - $10,000</option>
+                <option>$10,000 - $20,000</option>
+                <option>$20,000+</option>
+              </select>
+            </label>
+            <label class="full">
+              Message
+              <textarea name="message"></textarea>
+            </label>
+            <button class="btn btn-primary full" type="submit">Book a Consultation</button>
+            <p class="form-status full" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <span>EventArt | Luxury Event Design &amp; Coordination in Ottawa</span>
+        <span>Weddings | Private Celebrations | Corporate Events</span>
+      </div>
+    </footer>
+    <script>
+      const form = document.querySelector("#consultation-form");
+      const status = document.querySelector(".form-status");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        status.textContent = "Thank you. Your consultation request is ready for follow-up.";
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
