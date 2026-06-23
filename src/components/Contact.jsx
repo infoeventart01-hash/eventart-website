@@ -1,27 +1,51 @@
 import { useState } from "react";
 
 const eventTypes = ["Wedding", "Private Celebration", "Corporate Event", "Baby Shower", "Birthday", "Other"];
-const budgetRanges = ["$2,500 - $5,000", "$5,000 - $10,000", "$10,000 - $20,000", "$20,000+"];
 
 export default function Contact() {
   const [status, setStatus] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    setStatus("Thank you. Your consultation request is ready for follow-up.");
+    setStatus("Thank you. EventArt will be in touch shortly to begin planning your celebration.");
     event.currentTarget.reset();
   }
 
   return (
     <section className="section contact-section" id="contact">
       <div className="container contact-grid">
-        <div>
+        <div className="contact-intro">
           <p className="eyebrow">Contact</p>
           <h2>Book your consultation.</h2>
           <p className="muted">
             Share the first details of your event and EventArt will follow up to
             discuss your vision, priorities, timeline, and design direction.
           </p>
+
+          <div className="contact-methods">
+            <a className="contact-method" href="tel:+13434628665">
+              <span>Phone</span>
+              <strong>343-462-8665</strong>
+            </a>
+            <a className="contact-method" href="mailto:infoeventart01@gmail.com">
+              <span>Email</span>
+              <strong>infoeventart01@gmail.com</strong>
+            </a>
+          </div>
+
+          <a
+            className="button button-ghost contact-instagram"
+            href="https://www.instagram.com/official_eventart/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <rect height="18" rx="5" width="18" x="3" y="3" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+            Instagram
+          </a>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -39,7 +63,7 @@ export default function Contact() {
           </label>
           <label>
             Event Type
-            <select name="eventType" defaultValue="">
+            <select name="eventType" defaultValue="" required>
               <option value="" disabled>
                 Select one
               </option>
@@ -51,21 +75,6 @@ export default function Contact() {
           <label>
             Event Date
             <input name="eventDate" type="date" />
-          </label>
-          <label>
-            Guest Count
-            <input name="guestCount" type="number" min="1" />
-          </label>
-          <label className="full-width">
-            Budget Range
-            <select name="budgetRange" defaultValue="">
-              <option value="" disabled>
-                Select range
-              </option>
-              {budgetRanges.map((range) => (
-                <option key={range}>{range}</option>
-              ))}
-            </select>
           </label>
           <label className="full-width">
             Message

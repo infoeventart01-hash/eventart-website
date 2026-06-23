@@ -3,7 +3,7 @@ import { siteContent } from "../data/siteContent.js";
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://instagram.com/YOUR_INSTAGRAM_USERNAME",
+    href: "https://www.instagram.com/official_eventart/",
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24">
         <rect height="18" rx="5" width="18" x="3" y="3" />
