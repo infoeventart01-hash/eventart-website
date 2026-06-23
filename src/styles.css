@@ -649,6 +649,15 @@ textarea {
   font-weight: 700;
 }
 
+.form-status.error {
+  color: #f1ada2;
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .admin-section {
   background:
     linear-gradient(180deg, rgba(17, 17, 17, 0.98), rgba(5, 5, 5, 1)),

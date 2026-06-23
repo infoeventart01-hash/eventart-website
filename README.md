@@ -81,6 +81,24 @@ Copy-Item .env.example .env
 
 The admin dashboard can upload, organize, and delete additional portfolio photos.
 
+## Make The Contact Form Send Email
+
+This project uses Web3Forms. The access key is already configured locally in the ignored .env file, so the form can send inquiries to the email address connected to your Web3Forms account.
+
+1. Go to https://web3forms.com and create a free account.
+2. Create or verify infoeventart01@gmail.com as the destination inbox.
+3. In the Web3Forms dashboard, confirm that your access key is associated with that inbox.
+4. The local .env file contains:
+
+~~~text
+VITE_CONTACT_ENDPOINT=https://api.web3forms.com/submit
+VITE_CONTACT_ACCESS_KEY=YOUR_WEB3FORMS_ACCESS_KEY
+~~~
+
+5. Restart the development server with pnpm dev after changing .env.
+
+For GitHub Pages, add VITE_CONTACT_ENDPOINT and VITE_CONTACT_ACCESS_KEY as repository secrets in Settings > Secrets and variables > Actions. Use the Web3Forms endpoint and access key.
+
 ## Build For Production
 
 Run this before publishing:

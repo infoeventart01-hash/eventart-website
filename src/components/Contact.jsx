@@ -1,14 +1,57 @@
 import { useState } from "react";
 
 const eventTypes = ["Wedding", "Private Celebration", "Corporate Event", "Baby Shower", "Birthday", "Other"];
+const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
+const contactAccessKey = import.meta.env.VITE_CONTACT_ACCESS_KEY;
+
+// Edit these values when you are ready to change EventArt's phone number.
+const phoneContact = {
+  label: "343-462-8665",
+  href: "tel:+13434628665",
+};
 
 export default function Contact() {
   const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setStatus("Thank you. EventArt will be in touch shortly to begin planning your celebration.");
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    setStatus("");
+    setStatusType("");
+
+    if (!contactEndpoint || !contactAccessKey) {
+      setStatus("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
+      setStatusType("error");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(form);
+      formData.append("access_key", contactAccessKey);
+      formData.append("subject", "New EventArt website inquiry");
+      formData.append("from_name", "EventArt Website");
+
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) throw new Error("Form submission failed.");
+
+      form.reset();
+      setStatus("Thank you. Your inquiry has been received. EventArt will contact you shortly.");
+      setStatusType("success");
+    } catch {
+      setStatus("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
+      setStatusType("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -23,9 +66,9 @@ export default function Contact() {
           </p>
 
           <div className="contact-methods">
-            <a className="contact-method" href="tel:+13434628665">
+            <a className="contact-method" href={phoneContact.href}>
               <span>Phone</span>
-              <strong>343-462-8665</strong>
+              <strong>{phoneContact.label}</strong>
             </a>
             <a className="contact-method" href="mailto:infoeventart01@gmail.com">
               <span>Email</span>
@@ -78,12 +121,12 @@ export default function Contact() {
           </label>
           <label className="full-width">
             Message
-            <textarea name="message" rows="5" />
+            <textarea name="message" rows="5" required />
           </label>
-          <button className="button button-primary full-width" type="submit">
-            Book a Consultation
+          <button className="button button-primary full-width" disabled={isSubmitting} type="submit">
+            {isSubmitting ? "Sending Inquiry" : "Book a Consultation"}
           </button>
-          <p className="form-status full-width" role="status" aria-live="polite">
+          <p className={`form-status ${statusType}`.trim()} role="status" aria-live="polite">
             {status}
           </p>
         </form>
