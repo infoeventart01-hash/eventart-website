@@ -38,6 +38,7 @@ export default function Contact() {
       const response = await fetch(contactEndpoint, {
         method: "POST",
         body: formData,
+        headers: { Accept: "application/json" },
       });
       const result = await response.json();
 
@@ -118,6 +119,10 @@ export default function Contact() {
           <label>
             Event Date
             <input name="eventDate" type="date" />
+          </label>
+          <label>
+            Guest Count
+            <input name="guestCount" type="number" min="1" />
           </label>
           <label className="full-width">
             Message
