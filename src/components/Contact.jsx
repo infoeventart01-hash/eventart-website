@@ -1,3 +1,6 @@
+// Replace YOUR_INSTAGRAM_USERNAME with EventArt's final Instagram username.
+const instagramUrl = "https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/";
+
 export default function Contact() {
   return (
     <section className="section contact-section" id="contact">
@@ -20,8 +23,8 @@ export default function Contact() {
           </a>
           <a
             className="button button-ghost"
-            href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/"
-            rel="noreferrer"
+            href={instagramUrl}
+            rel="noopener noreferrer"
             target="_blank"
           >
             Instagram

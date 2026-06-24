@@ -1,9 +1,12 @@
 import { siteContent } from "../data/siteContent.js";
 
+// Replace YOUR_INSTAGRAM_USERNAME with EventArt's final Instagram username.
+const instagramUrl = "https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/";
+
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://www.instagram.com/official_eventart/",
+    href: instagramUrl,
     icon: (
       <svg aria-hidden="true" viewBox="0 0 24 24">
         <rect height="18" rx="5" width="18" x="3" y="3" />
@@ -44,7 +47,7 @@ export default function Footer() {
               className="social-link"
               href={link.href}
               key={link.name}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               {link.icon}
