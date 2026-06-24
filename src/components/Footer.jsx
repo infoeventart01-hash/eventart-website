@@ -1,7 +1,6 @@
 import { siteContent } from "../data/siteContent.js";
 
-// Replace YOUR_INSTAGRAM_USERNAME with EventArt's final Instagram username.
-const instagramUrl = "https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/";
+const instagramUrl = "https://www.instagram.com/official_eventart/";
 
 const socialLinks = [
   {
