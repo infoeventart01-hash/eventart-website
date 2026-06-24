@@ -1,4 +1,6 @@
 const instagramUrl = "https://www.instagram.com/official_eventart/";
+const gmailComposeUrl =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=infoeventart01@gmail.com&su=EventArt%20Consultation%20Inquiry";
 
 export default function Contact() {
   return (
@@ -14,8 +16,13 @@ export default function Contact() {
         </div>
 
         <div className="contact-actions" aria-label="Contact EventArt">
-          <a className="button button-primary" href="mailto:infoeventart01@gmail.com">
-            Email EventArt
+          <a
+            className="button button-primary"
+            href={gmailComposeUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            infoeventart01@gmail.com
           </a>
           <a className="button button-ghost" href="tel:+13434628665">
             Call EventArt

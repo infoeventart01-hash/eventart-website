@@ -1,6 +1,8 @@
 import { siteContent } from "../data/siteContent.js";
 
 const instagramUrl = "https://www.instagram.com/official_eventart/";
+const gmailComposeUrl =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=infoeventart01@gmail.com&su=EventArt%20Consultation%20Inquiry";
 
 const socialLinks = [
   {
@@ -39,6 +41,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <p>{siteContent.brand} | Luxury Event Design & Coordination</p>
+        <a
+          className="footer-email"
+          href={gmailComposeUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          infoeventart01@gmail.com
+        </a>
         <div className="social-links" aria-label="EventArt social media">
           {socialLinks.map((link) => (
             <a

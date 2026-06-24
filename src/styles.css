@@ -738,6 +738,21 @@ textarea {
   margin: 0;
 }
 
+.footer-email {
+  border-bottom: 1px solid rgba(240, 213, 143, 0.34);
+  color: var(--gold-bright);
+  font-size: 0.82rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  padding-bottom: 4px;
+  transition: color 180ms ease;
+}
+
+.footer-email:hover,
+.footer-email:focus-visible {
+  color: var(--ivory);
+}
+
 .social-links {
   display: flex;
   align-items: center;
