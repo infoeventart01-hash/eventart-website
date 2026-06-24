@@ -1,55 +1,52 @@
 import { useState } from "react";
 
+const web3FormsEndpoint = "https://api.web3forms.com/submit";
+const web3FormsAccessKey = import.meta.env.VITE_CONTACT_ACCESS_KEY;
 const eventTypes = ["Wedding", "Private Celebration", "Corporate Event", "Baby Shower", "Birthday", "Other"];
-const contactEndpoint = import.meta.env.VITE_CONTACT_ENDPOINT;
-const contactAccessKey = import.meta.env.VITE_CONTACT_ACCESS_KEY;
-
-// Edit these values when you are ready to change EventArt's phone number.
-const phoneContact = {
-  label: "343-462-8665",
-  href: "tel:+13434628665",
-};
 
 export default function Contact() {
-  const [status, setStatus] = useState("");
-  const [statusType, setStatusType] = useState("");
+  const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(event) {
     event.preventDefault();
     const form = event.currentTarget;
-    setStatus("");
-    setStatusType("");
+    setMessage("");
+    setIsError(false);
 
-    if (!contactEndpoint || !contactAccessKey) {
-      setStatus("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
-      setStatusType("error");
+    if (!web3FormsAccessKey) {
+      console.error("Web3Forms error: the local access key is missing.");
+      setIsError(true);
+      setMessage("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const formData = new FormData(form);
-      formData.append("access_key", contactAccessKey);
-      formData.append("subject", "New EventArt website inquiry");
-      formData.append("from_name", "EventArt Website");
+      const data = new FormData(form);
+      data.set("access_key", web3FormsAccessKey);
+      data.set("subject", "New EventArt Website Inquiry");
 
-      const response = await fetch(contactEndpoint, {
+      const response = await fetch(web3FormsEndpoint, {
         method: "POST",
-        body: formData,
+        body: data,
         headers: { Accept: "application/json" },
       });
       const result = await response.json();
 
-      if (!response.ok || !result.success) throw new Error("Form submission failed.");
+      if (!response.ok || !result.success) {
+        console.error("Web3Forms error:", result);
+        throw new Error(result.message || "Web3Forms rejected the inquiry.");
+      }
 
       form.reset();
-      setStatus("Thank you. Your inquiry has been received. EventArt will contact you shortly.");
-      setStatusType("success");
-    } catch {
-      setStatus("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
-      setStatusType("error");
+      setMessage("Thank you. Your inquiry has been received. EventArt will contact you shortly.");
+    } catch (error) {
+      console.error("Web3Forms error:", error);
+      setIsError(true);
+      setMessage("Something went wrong. Please email us directly at infoeventart01@gmail.com.");
     } finally {
       setIsSubmitting(false);
     }
@@ -65,31 +62,16 @@ export default function Contact() {
             Share the first details of your event and EventArt will follow up to
             discuss your vision, priorities, timeline, and design direction.
           </p>
-
           <div className="contact-methods">
-            <a className="contact-method" href={phoneContact.href}>
+            <a className="contact-method" href="tel:+13434628665">
               <span>Phone</span>
-              <strong>{phoneContact.label}</strong>
+              <strong>343-462-8665</strong>
             </a>
             <a className="contact-method" href="mailto:infoeventart01@gmail.com">
               <span>Email</span>
               <strong>infoeventart01@gmail.com</strong>
             </a>
           </div>
-
-          <a
-            className="button button-ghost contact-instagram"
-            href="https://www.instagram.com/official_eventart/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <rect height="18" rx="5" width="18" x="3" y="3" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="17.5" cy="6.5" r="1" />
-            </svg>
-            Instagram
-          </a>
         </div>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -107,7 +89,7 @@ export default function Contact() {
           </label>
           <label>
             Event Type
-            <select name="eventType" defaultValue="" required>
+            <select name="event_type" defaultValue="" required>
               <option value="" disabled>
                 Select one
               </option>
@@ -118,11 +100,11 @@ export default function Contact() {
           </label>
           <label>
             Event Date
-            <input name="eventDate" type="date" />
+            <input name="event_date" type="date" />
           </label>
           <label>
             Guest Count
-            <input name="guestCount" type="number" min="1" />
+            <input name="guest_count" type="number" min="1" />
           </label>
           <label className="full-width">
             Message
@@ -131,8 +113,8 @@ export default function Contact() {
           <button className="button button-primary full-width" disabled={isSubmitting} type="submit">
             {isSubmitting ? "Sending Inquiry" : "Book a Consultation"}
           </button>
-          <p className={`form-status ${statusType}`.trim()} role="status" aria-live="polite">
-            {status}
+          <p className={isError ? "form-status error" : "form-status"} role="status" aria-live="polite">
+            {message}
           </p>
         </form>
       </div>
