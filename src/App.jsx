@@ -8,7 +8,6 @@ import Testimonials from "./components/Testimonials.jsx";
 import InstagramGallery from "./components/InstagramGallery.jsx";
 import Cta from "./components/Cta.jsx";
 import Contact from "./components/Contact.jsx";
-import AdminDashboard from "./components/AdminDashboard.jsx";
 import Footer from "./components/Footer.jsx";
 
 export default function App() {
@@ -25,7 +24,6 @@ export default function App() {
         <InstagramGallery />
         <Cta />
         <Contact />
-        <AdminDashboard />
       </main>
       <Footer />
     </>
