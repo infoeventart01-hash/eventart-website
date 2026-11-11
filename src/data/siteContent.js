@@ -9,7 +9,6 @@ export const siteContent = {
     { label: "Portfolio", href: "#portfolio" },
     { label: "Instagram", href: "#instagram" },
     { label: "Contact", href: "#contact" },
-    { label: "Admin", href: "#admin" },
   ],
   hero: {
     title: "EventArt",
@@ -17,8 +16,7 @@ export const siteContent = {
     text: "We design elegant, unforgettable events with a refined black-and-gold touch. From weddings to private celebrations and corporate events, EventArt brings your vision to life with style, organization, and excellence.",
     primaryButton: "Book a Consultation",
     secondaryButton: "View Portfolio",
-    image:
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=2200&q=84",
+    image: "/images/weddings/Wedding-11.jpg",
   },
   about: {
     eyebrow: "About EventArt",

@@ -52,7 +52,7 @@ export default function Portfolio() {
   const filteredItems = useMemo(() => {
     if (activeCategory === "All") return galleryItems;
     return galleryItems.filter((item) => item.category === activeCategory);
-  }, [activeCategory, galleryItems]);
+  }, [galleryItems, activeCategory]);
 
   const galleryCategories = [
     "All",
@@ -78,7 +78,7 @@ export default function Portfolio() {
         <SectionIntro
           eyebrow="Portfolio / Gallery"
           title="A gallery of polished moments, dramatic details, and beautifully styled spaces."
-          text="Your EventArt photos appear here as you add them to the image folders, with elegant placeholders until each photo is ready."
+          text="A gallery of real EventArt celebrations — weddings, birthdays, baby showers, corporate events and custom signage."
         />
 
         <div className="category-tabs" aria-label="Portfolio categories">

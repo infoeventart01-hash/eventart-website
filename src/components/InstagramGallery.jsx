@@ -38,7 +38,7 @@ export default function InstagramGallery() {
         id: index,
         caption: post.caption,
         media_url: post.image,
-        permalink: "https://www.instagram.com/",
+        permalink: "https://www.instagram.com/official_eventart/",
       }));
 
   return (
@@ -47,7 +47,7 @@ export default function InstagramGallery() {
         <SectionIntro
           eyebrow="Instagram"
           title="Latest EventArt moments, details, and behind-the-scenes styling."
-          text="Connect the Instagram feed endpoint to automatically display your newest posts."
+          text="A look at our latest styling — follow @official_eventart on Instagram for more."
         />
 
         {status ? <p className="form-status">{status}</p> : null}
