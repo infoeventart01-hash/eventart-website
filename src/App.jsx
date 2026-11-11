@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react";
 import Header from "./components/Header.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
-import Portfolio from "./components/Portfolio.jsx";
 import GalleryPage from "./components/GalleryPage.jsx";
 import ServicesPage from "./components/ServicesPage.jsx";
 import Testimonials from "./components/Testimonials.jsx";
@@ -82,7 +81,6 @@ export default function App() {
           <>
             <Hero onViewGallery={goToGallery} />
             <About />
-            <Portfolio preview onViewGallery={goToGallery} />
             <Testimonials />
             <InstagramGallery />
             <Cta />
