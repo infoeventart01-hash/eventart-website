@@ -1,6 +1,6 @@
 import { siteContent } from "../data/siteContent.js";
 
-export default function Hero() {
+export default function Hero({ onViewGallery }) {
   const { hero } = siteContent;
 
   return (
@@ -18,7 +18,14 @@ export default function Hero() {
           <a className="button button-primary" href="#contact">
             {hero.primaryButton}
           </a>
-          <a className="button button-ghost" href="#portfolio">
+          <a
+            className="button button-ghost"
+            href="#gallery"
+            onClick={(event) => {
+              event.preventDefault();
+              onViewGallery();
+            }}
+          >
             {hero.secondaryButton}
           </a>
         </div>

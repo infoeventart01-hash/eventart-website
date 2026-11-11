@@ -4,7 +4,7 @@ import { siteContent } from "../data/siteContent.js";
 import { fetchPortfolioItems } from "../lib/portfolioService.js";
 import { isSupabaseConfigured } from "../lib/supabaseClient.js";
 
-export default function Portfolio() {
+export default function Portfolio({ preview = false, onViewGallery }) {
   const [items, setItems] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
   const [status, setStatus] = useState("");
@@ -54,6 +54,12 @@ export default function Portfolio() {
     return galleryItems.filter((item) => item.category === activeCategory);
   }, [galleryItems, activeCategory]);
 
+  // Homepage preview: two photos from each main category.
+  const previewItems = ["Weddings", "Birthdays", "Baby Showers"].flatMap(
+    (category) =>
+      galleryItems.filter((item) => item.category === category).slice(0, 2),
+  );
+
   const galleryCategories = [
     "All",
     ...new Set(galleryItems.map((item) => item.category)),
@@ -72,6 +78,8 @@ export default function Portfolio() {
     return `${import.meta.env.BASE_URL}${image.slice(1)}`;
   }
 
+  const visibleItems = preview ? previewItems : filteredItems;
+
   return (
     <section className="section" id="portfolio">
       <div className="container">
@@ -81,23 +89,25 @@ export default function Portfolio() {
           text="A gallery of real EventArt celebrations — weddings, birthdays, baby showers, corporate events and custom signage."
         />
 
-        <div className="category-tabs" aria-label="Portfolio categories">
-          {galleryCategories.map((category) => (
-            <button
-              className={activeCategory === category ? "tab-button active" : "tab-button"}
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              type="button"
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        {preview ? null : (
+          <div className="category-tabs" aria-label="Portfolio categories">
+            {galleryCategories.map((category) => (
+              <button
+                className={activeCategory === category ? "tab-button active" : "tab-button"}
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                type="button"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        )}
 
         {status ? <p className="form-status">{status}</p> : null}
 
         <div className="portfolio-grid">
-          {filteredItems.map((item) => (
+          {visibleItems.map((item) => (
             <article className="portfolio-card" key={item.id}>
               <img
                 alt={`${item.category} event gallery`}
@@ -112,6 +122,21 @@ export default function Portfolio() {
             </article>
           ))}
         </div>
+
+        {preview && onViewGallery ? (
+          <div
+            className="button-row"
+            style={{ justifyContent: "center", marginTop: "32px" }}
+          >
+            <button
+              className="button button-primary"
+              type="button"
+              onClick={onViewGallery}
+            >
+              View Full Gallery
+            </button>
+          </div>
+        ) : null}
       </div>
     </section>
   );

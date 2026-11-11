@@ -6,7 +6,7 @@ export const siteContent = {
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Packages", href: "#packages" },
-    { label: "Portfolio", href: "#portfolio" },
+    { label: "Portfolio", href: "#gallery" },
     { label: "Instagram", href: "#instagram" },
     { label: "Contact", href: "#contact" },
   ],
