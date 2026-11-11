@@ -135,21 +135,15 @@ export const siteContent = {
   testimonials: [
     {
       quote:
-        "EventArt brought our vision to life with such care and elegance. Every detail felt intentional, and our wedding day flowed beautifully from beginning to end.",
-      name: "Sophia & Daniel",
+        "Thank you for the amazing work yesterday — you really made the venue shine.",
+      name: "Ian Crump",
       event: "Wedding Celebration",
     },
     {
       quote:
-        "The decor was sophisticated, warm, and completely unforgettable. Our guests are still talking about the atmosphere EventArt created for our celebration.",
-      name: "Amelia R.",
+        "Thank you for everything! You and your team did amazing job. All the decorations and help made it even more special. Everyone was mentioning how beautiful everything was.",
+      name: "Cynthia Seed",
       event: "Private Celebration",
-    },
-    {
-      quote:
-        "Professional, calm, and exceptionally organized. EventArt made our corporate event feel polished while allowing our team to enjoy the evening.",
-      name: "Nora L.",
-      event: "Corporate Event",
     },
   ],
   instagramFallback: [
