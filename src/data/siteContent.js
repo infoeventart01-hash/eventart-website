@@ -58,6 +58,7 @@ export const siteContent = {
   portfolio: [
     {
       category: "Weddings",
+      tagline: "Where two hearts become one beautiful celebration.",
       folder: "weddings",
       files: [
         "wedding-01.jpg",
@@ -74,11 +75,27 @@ export const siteContent = {
         "Wedding -12.jpg",
         "Wedding-13.jpg",
       ],
+      quotes: [
+        "Two souls, one beautiful beginning.",
+        "Love is the finest decoration.",
+        "Where love gathers, beauty follows.",
+        "A day written in gold.",
+        "Every detail, a love letter.",
+        "And so, the adventure begins.",
+        "Love, beautifully celebrated.",
+        "The room glowed as bright as their love.",
+        "A celebration worthy of forever.",
+        "Elegance in every petal, love in every glance.",
+        "Together is a beautiful place to be.",
+        "Some moments deserve to be unforgettable.",
+        "When two hearts become one story.",
+      ],
       fallbackImage:
         "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=84",
     },
     {
       category: "Birthdays",
+      tagline: "Every year deserves a celebration as beautiful as you are.",
       folder: "birthdays",
       files: [
         "birthday-01.jpg",
@@ -92,11 +109,24 @@ export const siteContent = {
         "birthday-10.JPG",
         "birthday-11.JPG",
       ],
+      quotes: [
+        "Another year, another reason to celebrate.",
+        "Joy looks good on you.",
+        "Cake, laughter, and golden moments.",
+        "Celebrating the beautiful gift of you.",
+        "Here's to the moments that make us smile.",
+        "Every birthday is a new chapter of joy.",
+        "Surrounded by love, wrapped in celebration.",
+        "Making memories, one candle at a time.",
+        "Shine bright — today is all about you.",
+        "Cheers to you and the year ahead.",
+      ],
       fallbackImage:
         "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1400&q=84",
     },
     {
       category: "Baby Showers",
+      tagline: "Welcoming new life with love, beauty, and joy.",
       folder: "baby-showers",
       files: [
         "baby-shower-01.jpeg",
@@ -114,20 +144,44 @@ export const siteContent = {
         "baby-shower-13.jpg",
         "baby-shower-14.jpg",
       ],
+      quotes: [
+        "A little one is on the way — and so is the joy.",
+        "Tiny feet, big dreams.",
+        "Welcoming a new little love.",
+        "Sweet beginnings, soft colors, endless love.",
+        "A celebration for the littlest guest of honor.",
+        "Before you were born, you were already loved.",
+        "New life, new joy, new beginnings.",
+        "Wrapped in love, waiting for you.",
+        "A shower of love for a tiny miracle.",
+        "Little hands, little feet, a heart full of love.",
+        "Every baby is a blessing, every shower a celebration.",
+        "The sweetest hello is yet to come.",
+        "Love grows here.",
+        "A bundle of joy is on its way.",
+      ],
       fallbackImage:
         "https://images.unsplash.com/photo-1544829879-bc2d6d66d259?auto=format&fit=crop&w=1200&q=84",
     },
     {
       category: "Corporate Events",
+      tagline: "Polished spaces for moments that matter.",
       folder: "corporate",
       files: ["corporate-01.jpg"],
+      quotes: [
+        "Where business meets beauty.",
+      ],
       fallbackImage:
         "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=84",
     },
     {
       category: "Custom Signage & Seating Charts",
+      tagline: "The first hello of every celebration.",
       folder: "signage",
       files: ["signage-01.jpg"],
+      quotes: [
+        "Every great celebration begins with a warm welcome.",
+      ],
       fallbackImage:
         "https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1200&q=84",
     },

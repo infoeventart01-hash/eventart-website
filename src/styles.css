@@ -878,3 +878,37 @@ textarea {
     font-size: clamp(2.28rem, 12vw, 3.35rem);
   }
 }
+
+.portfolio-category {
+  margin-top: 64px;
+}
+
+.portfolio-category:first-of-type {
+  margin-top: 16px;
+}
+
+.portfolio-category-title {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.portfolio-category-tagline {
+  margin: 0 0 28px;
+  color: var(--gold-bright);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.portfolio-quote {
+  margin: 0;
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.3;
+}

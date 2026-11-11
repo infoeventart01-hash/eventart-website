@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import SectionIntro from "./SectionIntro.jsx";
 import { siteContent } from "../data/siteContent.js";
 import { fetchPortfolioItems } from "../lib/portfolioService.js";
@@ -6,7 +6,6 @@ import { isSupabaseConfigured } from "../lib/supabaseClient.js";
 
 export default function Portfolio() {
   const [items, setItems] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("All");
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -30,34 +29,30 @@ export default function Portfolio() {
     };
   }, []);
 
-  // Show all local EventArt gallery photos, then add any photos uploaded in the dashboard.
-  const galleryItems = [
-    ...siteContent.portfolio.flatMap((collection) =>
-      collection.files.map((file, index) => ({
-        id: `local-${collection.category}-${file}`,
-        category: collection.category,
-        title: `${collection.category} ${String(index + 1).padStart(2, "0")}`,
-        image: `/images/${collection.folder}/${file}`,
-        fallbackImage: collection.fallbackImage,
-      })),
-    ),
-    ...items.map((item) => ({
-      id: item.id,
-      category: item.category,
-      title: item.title,
-      image: item.imageUrl,
+  // Each category gets its own section on the portfolio page.
+  const sections = siteContent.portfolio.map((collection) => ({
+    category: collection.category,
+    tagline: collection.tagline,
+    photos: collection.files.map((file, index) => ({
+      id: `local-${collection.category}-${file}`,
+      image: `/images/${collection.folder}/${file}`,
+      fallbackImage: collection.fallbackImage,
+      quote: collection.quotes?.[index] || "",
     })),
-  ];
+  }));
 
-  const filteredItems = useMemo(() => {
-    if (activeCategory === "All") return galleryItems;
-    return galleryItems.filter((item) => item.category === activeCategory);
-  }, [galleryItems, activeCategory]);
-
-  const galleryCategories = [
-    "All",
-    ...new Set(galleryItems.map((item) => item.category)),
-  ];
+  // Photos uploaded in the dashboard join their matching category section.
+  items.forEach((item) => {
+    const photo = {
+      id: item.id,
+      image: item.imageUrl,
+      fallbackImage: undefined,
+      quote: item.title || "",
+    };
+    const section = sections.find((s) => s.category === item.category);
+    if (section) section.photos.push(photo);
+    else sections.push({ category: item.category, tagline: "", photos: [photo] });
+  });
 
   function showFallbackImage(event) {
     const fallbackImage = event.currentTarget.dataset.fallbackImage;
@@ -78,40 +73,40 @@ export default function Portfolio() {
         <SectionIntro
           eyebrow="Portfolio / Gallery"
           title="A gallery of polished moments, dramatic details, and beautifully styled spaces."
-          text="A gallery of real EventArt celebrations — weddings, birthdays, baby showers, corporate events and custom signage."
+          text="A gallery of real EventArt celebrations — weddings, birthdays, baby showers, corporate events and custom signage, each with its own story."
         />
-
-        <div className="category-tabs" aria-label="Portfolio categories">
-          {galleryCategories.map((category) => (
-            <button
-              className={activeCategory === category ? "tab-button active" : "tab-button"}
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              type="button"
-            >
-              {category}
-            </button>
-          ))}
-        </div>
 
         {status ? <p className="form-status">{status}</p> : null}
 
-        <div className="portfolio-grid">
-          {filteredItems.map((item) => (
-            <article className="portfolio-card" key={item.id}>
-              <img
-                alt={`${item.category} event gallery`}
-                data-fallback-image={item.fallbackImage}
-                onError={showFallbackImage}
-                src={getImageSource(item.image)}
-              />
-              <div>
-                <h3>{item.title || item.category}</h3>
-                <span>{item.category}</span>
-              </div>
-            </article>
-          ))}
-        </div>
+        {sections.map((section) => (
+          <div className="portfolio-category" key={section.category}>
+            <h2 className="portfolio-category-title">{section.category}</h2>
+            {section.tagline ? (
+              <p className="portfolio-category-tagline">
+                &ldquo;{section.tagline}&rdquo;
+              </p>
+            ) : null}
+            <div className="portfolio-grid">
+              {section.photos.map((photo) => (
+                <article className="portfolio-card" key={photo.id}>
+                  <img
+                    alt={`${section.category} event gallery`}
+                    data-fallback-image={photo.fallbackImage}
+                    onError={showFallbackImage}
+                    src={getImageSource(photo.image)}
+                  />
+                  {photo.quote ? (
+                    <div>
+                      <p className="portfolio-quote">
+                        &ldquo;{photo.quote}&rdquo;
+                      </p>
+                    </div>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
