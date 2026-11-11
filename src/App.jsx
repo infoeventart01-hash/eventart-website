@@ -22,7 +22,12 @@ export default function App() {
 
   useEffect(() => {
     function onHashChange() {
-      setView(viewFromHash());
+      const hash = window.location.hash;
+      if (hash === "#gallery") setView("gallery");
+      else if (hash === "#services" || hash === "#packages") setView("services");
+      else if (hash === "#home" || hash === "") setView("home");
+      // Any other anchor (for example #contact) leaves the current view
+      // alone, so in-page links scroll instead of switching views.
     }
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
